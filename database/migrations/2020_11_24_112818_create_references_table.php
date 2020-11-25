@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCategoriesTable extends Migration
+class CreateReferencesTable extends Migration
 {
   /**
    * Run the migrations.
@@ -13,10 +13,12 @@ class CreateCategoriesTable extends Migration
    */
   public function up()
   {
-    Schema::create('categories', function (Blueprint $table) {
+    Schema::create('references', function (Blueprint $table) {
       $table->id('id');
+      $table->efficientUuid('user_id')->index();
       $table->string('name');
-      $table->string('icon');
+      $table->string('institution_name');
+      $table->string('position');
       $table->timestamp('created_at', 6)->useCurrent();
       $table->timestamp('updated_at', 6)->useCurrent()->nullable();
       $table->timestamp('deleted_at', 6)->nullable()->default(null);
@@ -30,6 +32,6 @@ class CreateCategoriesTable extends Migration
    */
   public function down()
   {
-    Schema::dropIfExists('categories');
+    Schema::dropIfExists('references');
   }
 }

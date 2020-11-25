@@ -12,6 +12,8 @@
         "akaunting/firewall": "^1.2",
         "askedio/laravel-soft-cascade": "^8.0",
         "doctrine/dbal": "^3.0",
+        "dyrynda/laravel-efficient-uuid": "^4.2",
+        "dyrynda/laravel-model-uuid": "^6.3",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
