@@ -18,9 +18,9 @@ class CreateEducationTable extends Migration
       $table->efficientUuid('user_id')->index();
       $table->string('certificate_obtained');
       $table->string('institution_name');
-      $table->string('country_code')->default('US');
-      $table->string('state_code')->nullable()->default(null);
-      $table->string('lga_code')->nullable()->default(null);
+      $table->char('country_code', 2)->default('US');
+      $table->unsignedBigInteger('state_id')->nullable()->default(null);
+      $table->unsignedBigInteger('lga_id')->nullable()->default(null);
       $table->timestamp('started_at', 6)->nullable()->default(null);
       $table->timestamp('ended_at', 6)->nullable()->default(null);
       $table->timestamp('created_at', 6)->useCurrent();

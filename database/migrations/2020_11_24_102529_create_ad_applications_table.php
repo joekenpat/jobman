@@ -14,10 +14,11 @@ class CreateAdApplicationsTable extends Migration
   public function up()
   {
     Schema::create('ad_applications', function (Blueprint $table) {
-      $table->efficientUuid('id')->index();
+      $table->efficientUuid('id')->primary();
       $table->efficientUuid('user_id')->index();
       $table->efficientUuid('ad_id')->index();
       $table->text('cover_letter');
+      $table->string('status', 30); //accepted,pending,declined,
       $table->timestamp('created_at', 6)->useCurrent();
       $table->timestamp('updated_at', 6)->useCurrent()->nullable();
       $table->timestamp('deleted_at', 6)->nullable()->default(null);

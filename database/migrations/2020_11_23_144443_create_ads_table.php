@@ -15,15 +15,16 @@ class CreateAdsTable extends Migration
   {
     Schema::create('ads', function (Blueprint $table) {
       $table->efficientUuid('id')->primary();
-      $table->unsignedBigInteger('user_id');
+      $table->efficientUuid('user_id');
       $table->unsignedBigInteger('category_id');
-      $table->unsignedBigInteger('resolved_by');
-      $table->string('state_code')->nullable()->default(null);
-      $table->string('lga_code')->nullable()->default(null);
-      $table->string('place_code')->nullable()->default(null);
+      $table->efficientUuid('resolved_by')->nullable()->default(null);
+      $table->unsignedBigInteger('state_id')->nullable()->default(null);
+      $table->unsignedBigInteger('lga_id')->nullable()->default(null);
+      $table->unsignedBigInteger('place_id')->nullable()->default(null);
       $table->integer('inorganic_view')->default(0);
       $table->string('title');
       $table->string('plan');
+      $table->integer('avail_slot');
       $table->boolean('wage_negotiable')->default(false);
       $table->string('wage_type'); //hourly,daily,weekly,monthly
       $table->string('status')->default('pending'); //pending,declined,approved,closed,expired

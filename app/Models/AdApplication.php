@@ -19,7 +19,7 @@ class AdApplication extends Model
 
   public function uuidColumns(): array
   {
-    return ['id', 'user_id', 'ad_id'];
+    return ['id', 'user_id', 'ad_id',];
   }
 
   /**
@@ -28,7 +28,7 @@ class AdApplication extends Model
    * @var array
    */
   protected $fillable = [
-    'user_id', 'ad_id', 'cover_letter',
+    'user_id', 'ad_id', 'cover_letter', 'status',
   ];
 
   /**

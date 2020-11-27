@@ -28,9 +28,12 @@ class User extends Authenticatable
     'name',
     'dob',
     'phone',
-    'state_code',
-    'lga_code',
-    'place_code',
+    'origin_country_code',
+    'origin_state_code',
+    'resident_country_code',
+    'resident_state_code',
+    'resident_lga_code',
+    'resident_place_code',
     'address',
     'bio',
     'last_ip',
@@ -67,18 +70,36 @@ class User extends Authenticatable
     return $this->hasMany(AdApplication::class);
   }
 
-  public function state()
+  // current location details
+  public function resident_country()
   {
-    return $this->belongsTo(State::class, 'state_code');
+    return $this->belongsTo(Country::class, 'resident_country_code');
   }
 
-  public function lga()
+  public function resident_state()
   {
-    return $this->belongsTo(Lga::class, 'lga_code');
+    return $this->belongsTo(State::class, 'resident_state_code');
   }
 
-  public function place()
+  public function resident_lga()
   {
-    return $this->belongsTo(Place::class, 'place_code');
+    return $this->belongsTo(Lga::class, 'resident_lga_code');
+  }
+
+  public function resident_place()
+  {
+    return $this->belongsTo(Place::class, 'resident_place_code');
+  }
+
+
+  //birth location country
+  public function origin_country()
+  {
+    return $this->belongsTo(Country::class, 'origin_country_code');
+  }
+
+  public function origin_state()
+  {
+    return $this->belongsTo(State::class, 'origin_state_code');
   }
 }

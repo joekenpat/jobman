@@ -15,9 +15,9 @@ class Ad extends Model
     return 'id';
   }
 
-  public function uuidColumns(): Array
+  public function uuidColumns(): array
   {
-    return ['id','employer_id'];
+    return ['id', 'employer_id'];
   }
 
   /**
@@ -31,7 +31,7 @@ class Ad extends Model
     'inorganic_view', 'title', 'plan', 'wage_negotiable',
     'wage_type', 'wage_amount', 'status', 'service_type',
     'latitude', 'longitude', 'description', 'address',
-    'decline_reason', 'end_at',
+    'decline_reason', 'end_at', 'avail_slot'
   ];
 
 
