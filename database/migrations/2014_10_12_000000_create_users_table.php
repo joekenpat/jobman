@@ -15,14 +15,18 @@ class CreateUsersTable extends Migration
   {
     Schema::create('users', function (Blueprint $table) {
       $table->efficientUuid('id')->primary();
+      $table->string('avatar')->nullable()->default(null);
       $table->string('name');
       $table->string('title')->nullable()->default(null); //mr,ms
       $table->date('dob')->nullable()->default(null);
-      $table->string('phone')->unique()->nullable()->default(null);
+      $table->string('phone', 25)->unique()->nullable()->default(null);
       $table->string('username')->unique()->nullable()->default(null);
       $table->string('email')->unique();
-      $table->char('origin_country_code', 2)->nullable()->default(null);
-      $table->unsignedBigInteger('origin_state_id')->nullable()->default(null);
+      $table->string('status');
+      $table->string('level')->nullable()->default(null);
+      $table->integer('rating')->default(0);
+      // $table->char('origin_country_code', 2)->nullable()->default(null);
+      // $table->unsignedBigInteger('origin_state_id')->nullable()->default(null);
       $table->char('resident_country_code', 2)->nullable()->default(null);
       $table->unsignedBigInteger('resident_state_id')->nullable()->default(null);
       $table->unsignedBigInteger('resident_lga_id')->nullable()->default(null);

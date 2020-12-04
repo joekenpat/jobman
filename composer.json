@@ -19,6 +19,7 @@
         "guzzlehttp/guzzle": "^7.0.1",
         "intervention/image": "^2.5",
         "laravel/framework": "^8.12",
+        "laravel/passport": "^10.1",
         "laravel/tinker": "^2.5",
         "pulkitjalan/geoip": "^5.0",
         "torrix/laravel-uikit": "^0.1.3"

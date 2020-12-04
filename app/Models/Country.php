@@ -33,10 +33,16 @@ class Country extends Model
     return $this->hasMany(User::class, 'resident_country_code');
   }
 
-  public function job_seekers_origin()
+  public function admin_seekers_resident()
   {
-    return $this->hasMany(User::class, 'origin_country_code');
+    return $this->hasMany(Admin::class, 'resident_country_code');
   }
+
+  public function employer_seekers_resident()
+  {
+    return $this->hasMany(Employer::class, 'resident_country_code');
+  }
+
 
   public function states()
   {
@@ -52,5 +58,4 @@ class Country extends Model
   {
     return $this->hasMany(Place::class, 'country_code');
   }
-
 }

@@ -4,8 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class place extends Model
+class Place extends Model
 {
+  const filterables = [
+    'name', 'state', 'lga', 'country',
+  ];
 
   /**
    * The attributes that are mass assignable.
@@ -13,7 +16,7 @@ class place extends Model
    * @var array
    */
   protected $fillable = [
-    'id','name', 'country_id', 'state_id',
+    'id', 'name', 'slug', 'country_code', 'state_id',
     'lga_id', 'latitude', 'longitude', 'timezone'
   ];
 

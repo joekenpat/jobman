@@ -7,10 +7,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Dyrynda\Database\Support\GeneratesUuid;
 use Dyrynda\Database\Casts\EfficientUuid;
+use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
 {
-  use Notifiable, GeneratesUuid;
+  use Notifiable, GeneratesUuid, HasApiTokens;
 
 
   public function uuidColumn(): string
@@ -24,17 +25,21 @@ class User extends Authenticatable
    * @var array
    */
   protected $fillable = [
+    'avatar',
     'title',
     'name',
     'dob',
     'phone',
-    'origin_country_code',
-    'origin_state_code',
+    'rating',
+    'level',
+    // 'origin_country_code',
+    // 'origin_state_id',
     'resident_country_code',
-    'resident_state_code',
-    'resident_lga_code',
-    'resident_place_code',
+    'resident_state_id',
+    'resident_lga_id',
+    'resident_place_id',
     'address',
+    'status',
     'bio',
     'last_ip',
     'last_login',
@@ -92,14 +97,23 @@ class User extends Authenticatable
   }
 
 
-  //birth location country
-  public function origin_country()
-  {
-    return $this->belongsTo(Country::class, 'origin_country_code');
-  }
+  // //birth location country
+  // public function origin_country()
+  // {
+  //   return $this->belongsTo(Country::class, 'origin_country_code');
+  // }
 
-  public function origin_state()
+  // public function origin_state()
+  // {
+  //   return $this->belongsTo(State::class, 'origin_state_id');
+  // }
+
+
+  /**
+   * Get all of the user's password resets.
+   */
+  public function password_resets()
   {
-    return $this->belongsTo(State::class, 'origin_state_code');
+    return $this->morphMany(PasswordReset::class, 'resetable');
   }
 }

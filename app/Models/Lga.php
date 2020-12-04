@@ -4,16 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class lga extends Model
+class Lga extends Model
 {
 
+  const filterables = [
+    'name', 'state', 'country',
+  ];
   /**
    * The attributes that are mass assignable.
    *
    * @var array
    */
   protected $fillable = [
-    'name', 'country_code', 'state_code', 'code',
+    'name','slug','country_code', 'state_code',
   ];
 
   public function ads()

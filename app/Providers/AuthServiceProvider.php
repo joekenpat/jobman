@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
+use Laravel\Passport\Passport;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -25,6 +26,14 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Passport::tokensCan([
+          'admin' => 'Access Admin Backend',
+          'employer' => 'Access Customer App',
+          'employee' => 'Description for role',
+      ]);
+
+      Passport::setDefaultScope([
+          'employee'
+      ]);
     }
 }

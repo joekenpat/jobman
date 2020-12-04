@@ -7,13 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 class State extends Model
 {
 
+  const filterables = [
+    'name', 'country',
+  ];
   /**
    * The attributes that are mass assignable.
    *
    * @var array
    */
   protected $fillable = [
-    'id', 'name', 'country_code', 'code',
+    'id', 'name', 'slug', 'country_code', 'code',
   ];
 
   public function ads()

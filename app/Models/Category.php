@@ -15,11 +15,26 @@ class Category extends Model
    * @var array
    */
   protected $fillable = [
-    'name', 'icon',
+    'name', 'icon','slug',
   ];
+
+  /**
+   * The attributes that are countable.
+   *
+   * @var array
+   */
+  protected $withCount = [
+    'ads',
+  ];
+
 
   public function ads()
   {
     return $this->hasMany(Ad::class);
+  }
+
+  public function getIconAttribute()
+  {
+    return $this->icon !== null ? asset('images/categories/' . $this->icon) : null;
   }
 }

@@ -19,6 +19,7 @@ class CreateReferencesTable extends Migration
       $table->string('name');
       $table->string('institution_name');
       $table->string('position');
+      $table->string('phone',25);
       $table->timestamp('created_at', 6)->useCurrent();
       $table->timestamp('updated_at', 6)->useCurrent()->nullable();
       $table->timestamp('deleted_at', 6)->nullable()->default(null);

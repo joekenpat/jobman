@@ -28,7 +28,7 @@ class AdApplication extends Model
    * @var array
    */
   protected $fillable = [
-    'user_id', 'ad_id', 'cover_letter', 'status',
+    'user_id', 'ad_id', 'cover_letter', 'status', 'employer_viewed_at'
   ];
 
   /**
@@ -40,6 +40,7 @@ class AdApplication extends Model
     'id' => EfficientUuid::class,
     'user_id' => EfficientUuid::class,
     'ad_id' => EfficientUuid::class,
+    'employer_viewed_at' => 'datetime',
   ];
 
   public function user()

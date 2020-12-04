@@ -11,7 +11,7 @@ class ReadStateCSV
     $this->file = fopen(resource_path('/db_data/states.csv'), 'r');
     $this->delimiter = ",";
     $this->iterator = 0;
-    $this->header = ['id', 'country_code', 'name'];
+    $this->header = ['id', 'country_code', 'name', 'slug'];
   }
 
   public function csvToArray()
@@ -24,6 +24,7 @@ class ReadStateCSV
       } else {
         $this->iterator++;
         $row[0] = (int) $row[0];
+        $row[] = Str::slug($row[2] . '-' . $row[0]);
         $data[] = array_combine($this->header, $row);
         if ($this->iterator != 0 && $this->iterator % 2000 == 0) {
           $is_mul_1000 = true;

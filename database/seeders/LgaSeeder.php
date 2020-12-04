@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\lga;
+use App\Models\Lga;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\DB;
@@ -25,7 +25,7 @@ class LgaSeeder extends Seeder
       DB::statement('SET FOREIGN_KEY_CHECKS  = 0;');
       DB::disableQueryLog();
       foreach ($csv_reader->csvToArray() as $data) {
-        lga::insert($data);
+        Lga::insert($data);
         $lgaProgressBar->advance(count($data));
       }
       DB::statement('SET FOREIGN_KEY_CHECKS  = 1;');

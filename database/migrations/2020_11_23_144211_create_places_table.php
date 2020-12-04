@@ -19,6 +19,7 @@ class CreatePlacesTable extends Migration
       $table->unsignedBigInteger('state_id')->nullable();
       $table->unsignedBigInteger('lga_id')->nullable();
       $table->string('name');
+      $table->string('slug')->unique();
       $table->decimal('latitude', 10, 8)->nullable()->default(null);
       $table->decimal('longitude', 11, 8)->nullable()->default(null);
       $table->string('timezone', 40)->nullable()->default(null);

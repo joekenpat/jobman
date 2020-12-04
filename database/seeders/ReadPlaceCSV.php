@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use Illuminate\Support\Str;
+
 class ReadPlaceCSV
 {
 
@@ -27,7 +29,7 @@ class ReadPlaceCSV
      * Header to combine to each CSV row
      * same as DB City columns
      */
-    $this->header = ['id', 'country_code', 'state_id', 'lga_id', 'name', 'latitude', 'longitude', 'timezone'];
+    $this->header = ['id', 'country_code', 'state_id', 'lga_id', 'name', 'latitude', 'longitude', 'timezone', 'slug'];
   }
 
   public function csvToArray()
@@ -42,8 +44,9 @@ class ReadPlaceCSV
         $row[0] = (int) $row[0];
         $row[2] = (int) $row[2];
         $row[3] = (int) $row[3];
-        $row[5] = (int) $row[5];
-        $row[6] = (int) $row[6];
+        $row[5] = (float) $row[5];
+        $row[6] = (float) $row[6];
+        $row[] = Str::slug($row[4] . '-' . $row[0]);
         $data[] = array_combine(
           $this->header,
           $row,

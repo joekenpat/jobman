@@ -15,7 +15,7 @@ class CreateAdsTable extends Migration
   {
     Schema::create('ads', function (Blueprint $table) {
       $table->efficientUuid('id')->primary();
-      $table->efficientUuid('user_id');
+      $table->efficientUuid('employer_id');
       $table->unsignedBigInteger('category_id');
       $table->efficientUuid('resolved_by')->nullable()->default(null);
       $table->unsignedBigInteger('state_id')->nullable()->default(null);
@@ -23,18 +23,20 @@ class CreateAdsTable extends Migration
       $table->unsignedBigInteger('place_id')->nullable()->default(null);
       $table->integer('inorganic_view')->default(0);
       $table->string('title');
+      $table->string('slug')->unique();
       $table->string('plan');
+      $table->unsignedBigInteger('plan_id');
       $table->integer('avail_slot');
-      $table->boolean('wage_negotiable')->default(false);
-      $table->string('wage_type'); //hourly,daily,weekly,monthly
+      $table->string('wage_rate')->default('fixed'); //fixed,negotiable
+      $table->string('wage_plan'); //hourly,daily,weekly,monthly
       $table->string('status')->default('pending'); //pending,declined,approved,closed,expired
-      $table->string('service_type'); //remote,on-site
-      // $table->decimal('min_wage_amount', 12, 2);
-      // $table->decimal('max_wage_amount', 12, 2);
-      $table->decimal('wage_amount', 12, 2);
-      $table->decimal('latitude', 10, 8)->nullable()->default(null);
-      $table->decimal('longitude', 11, 8)->nullable()->default(null);
+      $table->string('ad_presence'); //remote,on-site
+      $table->string('ad_type'); //full_time,part_time,once',
+      $table->decimal('min_wage_amount', 12, 2);
+      $table->decimal('max_wage_amount', 12, 2);
+      $table->decimal('fixed_wage_amount', 12, 2);
       $table->text('description');
+      $table->text('summary');
       $table->text('address');
       $table->text('decline_reason');
       $table->timestamp('end_at', 6);
